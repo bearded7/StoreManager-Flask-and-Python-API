@@ -8,14 +8,32 @@ Created on Wed Oct 17 01:22:54 2018
 
 from flask import Flask
 from flask import jsonify
+from flask import make_response
+
+from flask_httpauth import HTTPBasicAuth
+auth = HTTPBasicAuth()
+
 
 app = Flask(__name__)
+
+
+@auth.get_password
+def get_password(username):
+    if username == 'admin':
+        return 'python'
+    return None
+
+
+@auth.error_handler
+def unauthorized():
+    return make_response(jsonify({'error': 'Unauthorized access'}), 401)
+
 
 sales_records = [
 
  {
 
-  'id': 1110,
+  'id': '1110',
 
   'product': 'Rice',
 
@@ -29,7 +47,7 @@ sales_records = [
 
  {
 
-  'id': 1111,
+  'id': '1111',
 
   'product': 'T-shirt',
 
@@ -43,7 +61,7 @@ sales_records = [
 
  {
 
-  'id': 1112,
+  'id': '1112',
 
   'product': 'Mocassins',
 
@@ -57,7 +75,7 @@ sales_records = [
 
  {
 
-  'id': 1113,
+  'id': '1113',
 
   'product': 'Timbaland',
 
@@ -71,7 +89,7 @@ sales_records = [
 
  {
 
-  'id': 1114,
+  'id': '1114',
 
   'product': 'Maize flour',
 
@@ -79,13 +97,13 @@ sales_records = [
 
   'quantity': 10,
 
-  'total price': '800,000 Ugx'
+  'total price': '800,000 Ugx',
 
  },
 
  {
 
-  'id': 1115,
+  'id': '1115',
 
   'product': 'Jean Trousers',
 
@@ -93,14 +111,15 @@ sales_records = [
 
   'quantity': 15,
 
-  'total price': '450,000 Ugx'
+  'total price': '450,000 Ugx',
 
  },
 
  ]
 
 
-@app.route('/StoreManager/api/v1.0/sales', methods=['GET'])
+@app.route('/StoreManager/v1/GetAllSales', methods=['GET'])
+@auth.login_required
 def getAllSales():
     return jsonify({'sales_records': sales_records})
 
