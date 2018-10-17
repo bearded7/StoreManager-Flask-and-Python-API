@@ -14,7 +14,7 @@ app = Flask(__name__)
 products = [
  {
 
-  'id': 110,
+  'id': '110',
 
   'name': 'Rice',
 
@@ -24,7 +24,7 @@ products = [
 
  {
 
-  'id': 111,
+  'id': '111',
 
   'name': 'Mocassins',
 
@@ -34,7 +34,7 @@ products = [
 
  {
 
-  'id': 112,
+  'id': '112',
 
   'name': 'T-Shirt',
 
@@ -44,7 +44,7 @@ products = [
 
  {
 
-  'id': 113,
+  'id': '113',
 
   'name': 'Timbaland',
 
@@ -54,7 +54,7 @@ products = [
 
  {
 
-  'id': 114,
+  'id': '114',
 
   'name': 'Maize Flour',
 
@@ -64,7 +64,7 @@ products = [
 
  {
 
-  'id': 115,
+  'id': '115',
 
   'name': 'Jean Trousers',
 
@@ -75,7 +75,7 @@ products = [
  ]
 
 
-@app.route('/StoreManager/api/v1.0/products', methods=['GET'])
+@app.route('/StoreManager/v1/GetAllProducts', methods=['GET'])
 def getAllProducts():
     return jsonify({'products': products})
 
