@@ -9,6 +9,8 @@ Created on Wed Oct 17 02:24:41 2018
 from flask import Flask
 from flask import jsonify
 from flask import request
+from flask import make_response
+
 
 from flask_httpauth import HTTPBasicAuth
 auth = HTTPBasicAuth()
@@ -32,7 +34,7 @@ def unauthorized():
 products = [
  {
 
-  'id': 110,
+  'id': '110',
 
   'name': 'Rice',
 
@@ -42,7 +44,7 @@ products = [
 
  {
 
-  'id': 111,
+  'id': '111',
 
   'name': 'Mocassins',
 
@@ -52,7 +54,7 @@ products = [
 
  {
 
-  'id': 112,
+  'id': '112',
 
   'name': 'T-Shirt',
 
@@ -62,7 +64,7 @@ products = [
 
  {
 
-  'id': 113,
+  'id': '113',
 
   'name': 'Timbaland',
 
@@ -72,7 +74,7 @@ products = [
 
  {
 
-  'id': 114,
+  'id': '114',
 
   'name': 'Maize Flour',
 
@@ -82,7 +84,7 @@ products = [
 
  {
 
-  'id': 115,
+  'id': '115',
 
   'name': 'Jean Trousers',
 
@@ -93,17 +95,17 @@ products = [
  ]
 
 
-@app.route('/StoreManager/api/v1.0/products/add', methods=['POST'])
+@app.route('/StoreManager/v1/AddProducts', methods=['POST'])
 @auth.login_required
 def createProduct():
 
     details = {
 
-     'id': request.json['id'],
+     'id': request.json['116'],
 
-     'name': request.json['name'],
+     'name': request.json['Soda'],
 
-     'title': request.json['title']
+     'price': request.json['1,000 Ugx']
 
     }
 
