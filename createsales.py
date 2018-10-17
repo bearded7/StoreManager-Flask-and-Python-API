@@ -9,14 +9,33 @@ Created on Wed Oct 17 03:23:53 2018
 from flask import Flask
 from flask import jsonify
 from flask import request
+from flask import make_response
+
+
+from flask_httpauth import HTTPBasicAuth
+auth = HTTPBasicAuth()
+
 
 app = Flask(__name__)
+
+
+@auth.get_password
+def get_password(username):
+    if username == 'attendant':
+        return 'python'
+    return None
+
+
+@auth.error_handler
+def unauthorized():
+    return make_response(jsonify({'error': 'Unauthorized access'}), 401)
+
 
 sales = [
 
  {
 
-  'id': 1110,
+  'id': '1110',
 
   'product': 'Rice',
 
@@ -30,7 +49,7 @@ sales = [
 
  {
 
-  'id': 1111,
+  'id': '1111',
 
   'product': 'T-shirt',
 
@@ -58,7 +77,7 @@ sales = [
 
  {
 
-  'id': 1113,
+  'id': '1113',
 
   'product': 'Timbaland',
 
@@ -72,7 +91,7 @@ sales = [
 
  {
 
-  'id': 1114,
+  'id': '1114',
 
   'product': 'Maize flour',
 
@@ -86,7 +105,7 @@ sales = [
 
  {
 
-  'id': 1115,
+  'id': '1115',
 
   'product': 'Jean Trousers',
 
@@ -98,10 +117,11 @@ sales = [
 
  },
 
- ]
+ ],
 
 
-@app.route('/StoreManager/api/v1.0/sales/add', methods=['POST'])
+@app.route('/StoreManager/v1/CreateSales', methods=['POST'])
+@auth.login_required
 def createSales():
 
     details = {
