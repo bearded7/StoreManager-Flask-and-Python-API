@@ -8,7 +8,7 @@ A CRUD web API that with GET and POST functionalities
 (https://codeclimate.com/github/bearded7/StoreManager-Flask-and-Python-API/maintainability)
 
 [![Coverage Status](https://coveralls.io/repos/github/bearded7/StoreManager-Flask-and-Python-API/badge.png?branch=ft-products-api))]
-(https://coveralls.io/github/bearded7/StoreManager-Flask-and-Python-API?branch=ft-products-api)
+(https://coveralls.io/github/bearded7/StoreManager-Flask-and-Python-API)
 
 
 
