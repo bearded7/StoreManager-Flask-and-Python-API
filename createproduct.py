@@ -95,17 +95,17 @@ products = [
  ]
 
 
-@app.route('/StoreManager/v1/AddProducts', methods=['POST'])
+@app.route('/StoreManager/api/v1/AddProducts', methods=['POST'])
 @auth.login_required
 def createProduct():
 
     details = {
 
-     'id': request.json['116'],
+     'id': request.json['id'],
 
-     'name': request.json['Soda'],
+     'name': request.json['name'],
 
-     'price': request.json['1,000 Ugx']
+     'price': request.json['price']
 
     }
 
