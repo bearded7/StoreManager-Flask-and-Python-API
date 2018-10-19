@@ -1,6 +1,4 @@
 # StoreManager-Flask-and-Python-API
-
-# StoreManager-Flask-and-Python-API
 A CRUD web API that with GET and POST functionalities 
 
 [github pages](https://bearded7.github.io/Store-Manager/UI/) 
