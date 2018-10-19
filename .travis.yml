@@ -20,4 +20,10 @@ script:
  
 after_sucess:
   coveralls
+<<<<<<< HEAD
   codecov
+=======
+  codecov
+  
+  
+>>>>>>> a6d76adb4566707dd7bcefc769187e4f0d468d63

@@ -156,4 +156,8 @@ class TestStore(unittest.TestCase):
                                   data=json.dumps(sale)
                                   )
 
+<<<<<<< HEAD
         self.assertEqual(result.status_code, 201)
+=======
+        self.assertEqual(result.status_code, 201)
+>>>>>>> a6d76adb4566707dd7bcefc769187e4f0d468d63
