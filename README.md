@@ -5,6 +5,7 @@ A CRUD web API that with GET and POST functionalities
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/de3d25a8dafaada7833c/maintainability)]
 (https://codeclimate.com/github/bearded7/StoreManager-Flask-and-Python-API/maintainability)
+
 [![Build Status](https://travis-ci.org/github/bearded7/StoreManager-Flask-and-Python-API.png?branch=develop)]
 (https://travis-ci.org/github/bearded7/StoreManager-Flask-and-Python-API})
 
@@ -24,4 +25,3 @@ iv) GET /StoreManager/api/v1/Sales/<id>         - Retrieve the details of given 
 v) POST  /StoreManager/api/v1/Products/AddProduct     - update product in the database
 vi) POST /StoreManager/api/v1/Sales/CreateSales       - update sales record in the database
 
-2. Conditions to 
