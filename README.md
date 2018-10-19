@@ -9,11 +9,7 @@ A CRUD web API that with GET and POST functionalities
 [![Coverage Status](https://coveralls.io/repos/github/bearded7/StoreManager-Flask-and-Python-API/badge.png)]
 (https://coveralls.io/github/bearded7/StoreManager-Flask-and-Python-API)
 
-<<<<<<< HEAD
-![Build Status](https://travis-ci.org/github/bearded7/StoreManager-Flask-and-Python-API.png?branch=develop)]
-=======
 [![Build Status](https://travis-ci.org/github/bearded7/StoreManager-Flask-and-Python-API.svg?branch=develop)]
->>>>>>> a6d76adb4566707dd7bcefc769187e4f0d468d63
 (https://github/bearded7/StoreManager-Flask-and-Python-API)
 
 [Flask](http://flask.pocoo.org/) is a micro web framework powered by Python. Its API is fairly small, making it easy to learn and simple to use. But don't let this fool you, as it's powerful enough to support enterprise-level applications handling large amounts of traffic. You can start small with an app contained entirely in one file, then slowly scale up to multiple files and folders in a well-structured manner as your site becomes more and more complex.
@@ -28,26 +24,4 @@ iv) GET /StoreManager/api/v1/Sales/<id>         - Retrieve the details of given 
 v) POST  /StoreManager/api/v1/Products/AddProduct     - update product in the database
 vi) POST /StoreManager/api/v1/Sales/CreateSales       - update sales record in the database
 
-2. Conditions to be met
-
-- The home page of the API is /StoreManager/api/v1
-- To access all products: /StoreManager/api/v1/GetAllProducts
-- To access product by id: /StoreManager/api/v1/Products/<productId>
-- To access All sales (admin only, username is admin, password is python) /StoreManager/api/v1/GetAllSales
-- To access specific sale record (attendant only, username is attendant, password: python) /StoreManager/api/v1/Sales/<salesId>
-- To create a product(admin only): /StoreManager/api/v1/AddProducts
-- To create a sale record (attendant only): /StoreManager/api/v1/CreateSales
-
-
-3. Installation of Flask
-
-To install flask framework, please refer the official website [1]. If you have pip installed in your Python environment, please follow this step.
-
-$ pip install Flask
-
-If you don't have pip, please download the flask from http://pypi.python.org/packages/source/F/Flask/Flask-0.10.1.tar.gz and execute the setup.py
-
-
-
-
-
+2. Conditions to 
