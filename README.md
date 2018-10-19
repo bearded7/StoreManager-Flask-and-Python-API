@@ -11,7 +11,7 @@ A CRUD web API that with GET and POST functionalities
 (https://coveralls.io/github/bearded7/StoreManager-Flask-and-Python-API?branch=dmin-get-all-sale-records)
 
 [![Build Status](https://travis-ci.org/github/bearded7/StoreManager-Flask-and-Python-API.svg?branch=dmin-get-all-sale-records)]
-(https://github.com/bearded7/StoreManager-Flask-and-Python-API/admin-get-all-sale-records)
+(https://github.com/bearded7/StoreManager-Flask-and-Python-API/)
 
 
 
