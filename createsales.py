@@ -119,6 +119,8 @@ sales = [
 
  ],
 
+saless = [],
+
 
 @app.route('/StoreManager/api/v1/CreateSales', methods=['POST'])
 @auth.login_required
@@ -138,9 +140,11 @@ def createSales():
 
     }
 
-    sales.append(details)
+    saless.append(details)
 
     return jsonify(details)
+
+    
 
 
 if __name__ == '__main__':
