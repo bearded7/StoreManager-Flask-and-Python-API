@@ -3,7 +3,7 @@ A CRUD web API that with GET and POST functionalities
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/de3d25a8dafaada7833c/maintainability)]
 
-[![Coverage Status](https://coveralls.io/repos/github/bearded7/StoreManager-Flask-and-Python-API/badge.png)]
+[![Coverage Status](https://coveralls.io/repos/github/bearded7/StoreManager-Flask-and-Python-API/badge.svg)]
 
 [![Build Status](https://travis-ci.org/github/bearded7/StoreManager-Flask-and-Python-API.svg?branch=feature)]
 
