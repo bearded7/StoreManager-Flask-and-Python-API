@@ -1,6 +1,6 @@
-from storeapi.api import App
+from storeapi.api import app
 
 
 
 if __name__ == "__main__":
-    App.run()
+    app.run()
