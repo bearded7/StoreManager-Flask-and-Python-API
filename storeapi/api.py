@@ -6,32 +6,11 @@ Created on Wed Oct 17 13:07:16 2018
 """
 
 
-from flask import Flask
-from flask import jsonify
-from flask import make_response
-from flask import request
-
-from flask_httpauth import HTTPBasicAuth
-Auth = HTTPBasicAuth()
+from flask import Flask, request, jsonify, abort, make_response
 
 
-@Auth.get_password
-def get_password(username):
-    if username == 'admin':
-        return 'python'
-    return None
-
-
-@Auth.error_handler
-def unauthorizd():
-    return make_response(jsonify(
-            {'error':
-                '''Unauthorized access use admin and password python to
-                access'''}), 401)
-
-
-App = Flask(__name__)
-
+app = Flask(__name__)
+app.config["DEBUG"] = True
 
 products = [
     {
@@ -189,37 +168,43 @@ new_product = [{}],
 new_sales = [{}],
 
 
-@App.route('/', methods=['GET'])
+@app.route('/', methods=['GET'])
 def home():
-    return ('Welcome  to Iwotokijikiji Store Manager'), 200
+    return ('Welcome to Iwotokijikiji Store Manager'),200
 
 
-@App.route('/StoreManager/api/v1/Products/All', methods=['GET'])
+@app.errorhandler(405)
+def url_not_found(error):
+    return jsonify({'message': 'Requested method not allowed'}), 405
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return jsonify({'message': 'page not found, check the url'}), 404
+
+
+@app.errorhandler(500)
+def internal_error(error):
+    return jsonify({'message': 'internal server error'}), 500
+
+
+@app.errorhandler(404)
+def not_found(error):
+    return make_response(jsonify({'error': 'product not found'}), 404)
+
+
+@app.route('/StoreManager/api/v1/Products/All', methods=['GET'])
 def get_products():
     return jsonify({'products': products})
 
 
-@App.route('/StoreManager/api/v1/Products/<productId>', methods=['GET'])
+@app.route('/StoreManager/api/v1/Products/<productId>', methods=['GET'])
 def get_product(productId):
     usr = [prod for prod in products if (prod['id'] == productId)]
     return jsonify({'prod': usr})
 
 
-@App.route('/StoreManager/api/v1/Sales/All', methods=['GET'])
-@Auth.login_required
-def get_sales():
-    return jsonify({'sales': sales})
-
-
-@App.route('/StoreManager/api/v1/Sales/<salesId>', methods=['GET'])
-@Auth.login_required
-def get_sale(salesId):
-    usr = [rec for rec in sales if (rec['id'] == salesId)]
-    return jsonify({'rec': usr})
-
-
-@App.route('/StoreManager/api/v1/Products/Add', methods=['POST'])
-@Auth.login_required
+@app.route('/StoreManager/api/v1/Products/Add', methods=['POST'])
 def create_prod():
 
     create_prod = {
@@ -252,7 +237,18 @@ def create_prod():
             ), 201
 
 
-@App.route('/StoreManager/api/v1/Sales/Create', methods=['POST'])
+@app.route('/StoreManager/api/v1/Sales/All', methods=['GET'])
+def get_sales():
+    return jsonify({'sales': sales})
+
+
+@app.route('/StoreManager/api/v1/Sales/<salesId>', methods=['GET'])
+def get_sale(salesId):
+    usr = [rec for rec in sales if (rec['id'] == salesId)]
+    return jsonify({'rec': usr})
+
+
+@app.route('/StoreManager/api/v1/Sales/Create', methods=['POST'])
 def createRec():
 
     rec = {
@@ -282,5 +278,6 @@ def createRec():
 
     return jsonify({new_sales: "rec", 'message': "successfully added"}), 201
 
-if __name__ == '__main__':
-    App.run(debug=True)
+
+                                                                                                                                                                                                                                                                                                                                    
+
