@@ -1,7 +1,7 @@
 # StoreManager-Flask-and-Python-API
 A CRUD web API that with GET and POST functionalities 
 
-[github pages](https://bearded7.github.io/Store-Manager/UI/) [![Maintainability](https://api.codeclimate.com/v1/badges/de3d25a8dafaada7833c/maintainability)]
+[![Maintainability](https://api.codeclimate.com/v1/badges/de3d25a8dafaada7833c/maintainability)]
 
 [![Coverage Status](https://coveralls.io/repos/github/bearded7/StoreManager-Flask-and-Python-API/badge.png)]
 
