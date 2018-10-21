@@ -2,6 +2,7 @@ import unittest
 import json
 import requests 
 from unittest import TestCase
+from endpoints.sales_by_id import app
 
 def test_client_can_get_own_sale_records(self):
     id = 1110
@@ -18,7 +19,7 @@ def test_client_can_get_own_sale_records(self):
 
 def test_route_get_own_sales_requires_login(self):
     res = self.client.get(
-        'StoreManager/api/v1/Sales', follow_redirects=True)
+        'StoreManager/api/v1/Sales/', follow_redirects=True)
     self.assertIn(b'Please log in to access this page', response.data)
 
 if __name__ == '__main__':
