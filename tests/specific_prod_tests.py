@@ -2,6 +2,7 @@ import unittest
 import json
 import requests 
 from unittest import TestCase
+from endpoints.single_product import app
 
 def test_both_admin_attendant_can_get_specific_product(self):
     id = 110
@@ -11,18 +12,18 @@ def test_both_admin_attendant_can_get_specific_product(self):
     id = 114
     id = 115
 
-    res = self.client.get(
+    response = self.client.get(
         'StoreManager/api/v1/Products/%d' %id,
     )
-    data = json.loads(res.data)
+    data = json.loads(response.data)
     print(data)
-    print(res.status_code)
-    self.assertEqual(200, res.status_code, msg = "product located")
+    print(response.status_code)
+    self.assertEqual(200, response.status_code, msg = "product located")
 
 def test_cannot_get_invalid_product_id(self):
     self.product_url = "http://localhost:5000/StoreManager/api/v1/Products/1"
-    res = self.client.get(self.product_url)
-    self.assertEqual(404, res.status_code)
+    response = self.client.get(self.product_url)
+    self.assertEqual(404, response.status_code)
 
 if __name__ == '__main__':
     unittest.main()
