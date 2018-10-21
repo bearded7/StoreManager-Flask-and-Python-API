@@ -2,17 +2,18 @@ import unittest
 import json
 import requests 
 from unittest import TestCase
+from endpoints.all_products import app
 
 def test_admin_and_attendant_can_get_products(self):
-    res = self.client.get(
+    response = self.client.get(
         'StoreManager/api/v1/GetAllProducts'
     )
-    self.assertEqual(200, res.status_code)
+    self.assertEqual(200, response.status_code)
 
-    res = self.admin.get (
+    response = self.admin.get (
         'StoreManager/api/v1/GetAllProducts'
     )
-    self.assertEqual(200, res.status_code)
+    self.assertEqual(200, response.status_code)
 
 if __name__ == '__main__':
     unittest.main()
