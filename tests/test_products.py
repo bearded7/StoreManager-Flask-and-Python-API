@@ -8,12 +8,12 @@ def test_admin_and_attendant_can_get_products(self):
     response = self.client.get(
         'StoreManager/api/v1/GetAllProducts'
     )
-    self.assertEqual(200, response.status_code)
+    self.assertEqual(404, response.status_code)
 
     response = self.admin.get (
         'StoreManager/api/v1/GetAllProducts'
     )
-    self.assertEqual(200, response.status_code)
+    self.assertEqual(404, response.status_code)
 
 if __name__ == '__main__':
     unittest.main()

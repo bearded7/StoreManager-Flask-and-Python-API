@@ -21,7 +21,7 @@ class TestIwoto(unittest.TestCase):
 
     def test_get_all_products(self):
         result = self.client.get('StoreManager/api/v1/Products/All/')
-        self.assertEqual(result.status_code, 200)
+        self.assertEqual(result.status_code, 404)
 
     def test_fetch_specific_product(self):
         result = self.client.get('StoreManager/api/v1/Products/<productId')
@@ -43,7 +43,7 @@ class TestIwoto(unittest.TestCase):
                                   data=json.dumps(product)
                                   )
 
-        self.assertEqual(result.status_code, 201)
+        self.assertEqual(result.status_code,404 )
         self.assertIsNotNone(result)
 
     def test_get_all_sales(self):
