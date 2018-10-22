@@ -1,5 +1,6 @@
 language: python
 python:
+<<<<<<< HEAD
   - "3.6"
   - "3.3"
   - "2.7"
@@ -21,3 +22,17 @@ script:
 after_sucess:
   - coveralls
   - codecov
+=======
+    - 3.6.3
+
+install:
+    - pip install -r requirements.txt
+    - pip install pytest-cov
+
+script:
+    - py.test --cov
+
+after_success:
+    - coveralls
+    - codeclimate-test-reporter
+>>>>>>> db75f2f26a416a7fddcf1b3e35355e26fad8b41c
