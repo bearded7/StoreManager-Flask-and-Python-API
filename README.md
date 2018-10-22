@@ -5,7 +5,7 @@ A CRUD web API with GET and POST functionalities
 
 [![Build Status](https://travis-ci.org/github/bearded7/StoreManager-Flask-and-Python-API.png?branch=develop)]
 
-[![Code Climate](https://codeclimate.com/github/bearded7/StoreManager-Flask-and-Python-API/badges/gpa.svg)]
+[![Code Climate](https://codeclimate.com/github/bearded7/StoreManager-Flask-and-Python-API/badges/gpa.svg?branch=develop)]
 
 
 
