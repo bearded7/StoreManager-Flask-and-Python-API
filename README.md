@@ -14,7 +14,7 @@ A CRUD web API that with GET and POST functionalities
 
 1. The Plan
 
-In this exercise, we will create an in-memory JSON DB to store and manipulate a simple employee database and develop RESTful APIs to perform CRUD operations using GET and POST methods. We will develop the below APIs
+In this exercise, we will create an in-memory JSON Database to store and manipulate a simple store database and develop RESTful APIs to perform CRUD operations using GET and POST methods. We will develop the below APIs
 i) GET  /StoreManager/api/v1/Products/All     - Retrieve all products in the database
 ii) GET /StoreManager/api/v1/Products/<id>      - Retrieve the details of given product using Id
 iii) GET  /StoreManager/api/v1/Sales/All            - Retrieve all sales records in the database
@@ -40,6 +40,8 @@ To install flask framework, please refer the official website [1]. If you have p
 $ pip install Flask
 
 If you don't have pip, please download the flask from http://pypi.python.org/packages/source/F/Flask/Flask-0.10.1.tar.gz and execute the setup.py
+
+4. 
 
 
 
