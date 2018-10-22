@@ -6,7 +6,11 @@ Created on Wed Oct 17 13:07:16 2018
 """
 
 
-from flask import Flask, request, jsonify, abort, make_response
+from flask import Flask
+from flask import request
+from flask import jsonify
+from flask import abort
+from flask import make_response
 
 
 app = Flask(__name__)

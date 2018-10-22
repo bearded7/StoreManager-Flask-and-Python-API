@@ -12,18 +12,18 @@ def test_both_admin_attendant_can_get_specific_product(self):
     id = 114
     id = 115
 
-    response = self.client.get(
+    feedback = self.client.get(
         'StoreManager/api/v1/Products/%d' %id,
     )
-    data = json.loads(response.data)
+    data = json.loads(feedback.data)
     print(data)
-    print(response.status_code)
-    self.assertEqual(200, response.status_code, msg = "product located")
+    print(feedback.status_code)
+    self.assertEqual(200, feedback.status_code, msg = "product located")
 
 def test_cannot_get_invalid_product_id(self):
     self.product_url = "http://localhost:5000/StoreManager/api/v1/Products/1"
-    response = self.client.get(self.product_url)
-    self.assertEqual(404, response.status_code)
+    feedback = self.client.get(self.product_url)
+    self.assertEqual(404, feedback.status_code)
 
 if __name__ == '__main__':
     unittest.main()

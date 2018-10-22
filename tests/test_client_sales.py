@@ -9,18 +9,18 @@ def test_client_can_get_own_sale_records(self):
     id = 1113
     id = 1115
 
-    res = self.client.get(
+    feedback = self.client.get(
         'StoreManager/api/v1/ProductsSales/%d' %id,
     )
-    data = json.loads(res.data)
+    data = json.loads(feedback.data)
     print(data)
-    print(res.status_code)
-    self.assertEqual(200, res.status_code, msg = "Here is your sale record")
+    print(feedback.status_code)
+    self.assertEqual(200, feedback.status_code, msg = "Here is your sale record")
 
 def test_route_get_own_sales_requires_login(self):
-    res = self.client.get(
+    feedback = self.client.get(
         'StoreManager/api/v1/Sales/', follow_redirects=True)
-    self.assertIn(b'Please log in to access this page', response.data)
+    self.assertIn(b'Please log in to access this page', feedback.data)
 
 if __name__ == '__main__':
     unittest.main()

@@ -8,12 +8,12 @@ Created on Wed Oct 17 13:07:16 2018
 
 import unittest
 from flask import json
-from storeapi.api import App
+from storeapi.api import app
 
 
 class TestIwoto(unittest.TestCase):
     def setUp(self):
-        self.client = App.test_client()
+        self.client = app.test_client()
 
     def test_base_url(self):
         response = self.client.get('/')
