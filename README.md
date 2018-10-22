@@ -32,16 +32,7 @@ vi) POST /StoreManager/api/v1/Sales/Sales/Create       - update sales record in 
 - To create a product(admin only): /StoreManager/api/v1/Products/Add
 - To create a sale record (attendant only): /StoreManager/api/v1/Sales/Create
 
-
-3. Installation of Flask
-
-To install flask framework, please refer the official website [1]. If you have pip installed in your Python environment, please follow this step.
-
-$ pip install Flask
-
-If you don't have pip, please download the flask from http://pypi.python.org/packages/source/F/Flask/Flask-0.10.1.tar.gz and execute the setup.py
-
-4. 
+ 
 
 
 
