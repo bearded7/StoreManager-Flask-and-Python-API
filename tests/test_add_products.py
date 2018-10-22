@@ -2,7 +2,7 @@ import unittest
 import json
 import requests 
 from unittest import TestCase
-from endpoints.createproduct import app 
+from endpoints.createproduct import createProduct
 
 def test_admin_can_add_product(self):
     feedback = self.admin.post(
