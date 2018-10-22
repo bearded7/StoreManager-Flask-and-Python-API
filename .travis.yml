@@ -1,15 +1,23 @@
 language: python
-
 python:
-    - 3.6.3
-
-install:
-    - pip install -r requirements.txt
-    - pip install pytest-cov
-
-script:
-    - py.test --cov=apie
-
-after_success:
-    - coveralls
-    - codeclimate-test-reporter
+  - "3.6"
+  - "3.3"
+  - "2.7"
+  - "2.6"
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
+install: 
+  - pip install .
+  - pip install nose coverage
+  - pip install coveralls
+# # command to run tests, e.g. python setup.py test
+script:  
+  - python setup.py nosetests --with-coverage --cover-package pypiview
+  - coverage
+  - coveralls
+ 
+after_sucess:
+  - coveralls
+  - codecov
