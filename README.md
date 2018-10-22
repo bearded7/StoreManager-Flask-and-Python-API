@@ -1,5 +1,5 @@
 # StoreManager-Flask-and-Python-API
-A CRUD web API that with GET and POST functionalities 
+A CRUD web API with GET and POST functionalities 
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/de3d25a8dafaada7833c/maintainability)]
 
