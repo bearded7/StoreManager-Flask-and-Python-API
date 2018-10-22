@@ -25,7 +25,7 @@ pluggy==0.8.0
 py==1.7.0
 pylint==2.1.1
 pytest==3.9.1
-PYTHONPATH==. py.test
+PYTHONPATH==.. /
 pytz==2018.5
 requests==2.19.1
 six==1.11.0
