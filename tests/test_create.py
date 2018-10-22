@@ -10,10 +10,11 @@ def test_admin_and_attendant_can_get_products(TestCase):
     )
     self.assertEqual(200, response.status_code)
 
-    response = self.admin.get (
+    response = self.admin.get(
         'StoreManager/api/v1/GetAllProducts'
     )
     self.assertEqual(200, response.status_code)
+    
 
 def test_both_admin_attendant_can_get_specific_product(TestCase):
     "id" = 110
@@ -23,7 +24,7 @@ def test_both_admin_attendant_can_get_specific_product(TestCase):
     "id" = 114
     "id" = 115
 
-    response = self.client.get(
+response = self.client.get(
         'StoreManager/api/v1/Products/%d' %id,
     )
     data = json.loads(response.data)
