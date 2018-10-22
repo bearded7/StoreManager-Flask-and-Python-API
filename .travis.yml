@@ -8,7 +8,7 @@ install:
     - pip install pytest-cov
 
 script:
-    - py.test --cov=apie
+    - py.test --cov
 
 after_success:
     - coveralls
