@@ -33,10 +33,6 @@ class TestIwoto7(unittest.TestCase):
         self.assertEqual(result.status_code, 404)
         self.assertIsNotNone(result)
 
-    def test_get_all_sales(self):
-        result = self.client.get('StoreManager/api/v1/Sales/All/')
-        self.assertEqual(result.status_code, 404)
-
 
 if __name__ == '__main__':
     unittest.main()
