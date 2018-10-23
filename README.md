@@ -8,7 +8,6 @@ A CRUD web API with GET and POST functionalities
 
 
 
-
 [Flask](http://flask.pocoo.org/) is a micro web framework powered by Python. Its API is fairly small, making it easy to learn and simple to use. That's not all as it's powerful enough to support enterprise-level applications handling large amounts of traffic. I have started small with an app contained entirely in one file, then I intend to slowly scale up to multiple files and folders in a well-structured manner as my site becomes more and more complex.
 
 
