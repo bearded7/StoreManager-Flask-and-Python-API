@@ -247,14 +247,14 @@ def get_sales():
 
 @app.route('/StoreManager/api/v1/Sales/<salesId>', methods=['GET'])
 def get_sale(salesId):
-    usr = [rec for rec in sales if (rec['id'] == salesId)]
-    return jsonify({'rec': usr})
+    usr = [new_record for new_record in sales if (new_record['id'] == salesId)]
+    return jsonify({'new_record': usr})
 
 
 @app.route('/StoreManager/api/v1/Sales/Create', methods=['POST'])
-def createRec():
+def createnew_record():
 
-    rec = {
+    new_record = {
      'id': request.json['id'],
      'product': request.json['product'],
      'unit price': request.json['unit price'],
@@ -262,24 +262,24 @@ def createRec():
      'total price': request.json['total price'],
     }
 
-    if not rec['product']:
+    if not new_record['product']:
         return jsonify({'message': "Name can not be empty"}), 400
 
-    if not rec['id']:
+    if not new_record['id']:
         return jsonify({'message': "id is missing"}), 400
 
-    if not rec['unit price']:
+    if not new_record['unit price']:
         return jsonify({'message': "price is missing"}), 400
 
-    if not rec['quantity']:
+    if not new_record['quantity']:
         return jsonify({'message': "quantity is missing"}), 400
 
-    if not rec['total price']:
+    if not new_record['total price']:
         return jsonify({'message': "total is missing"}), 400
 
-    new_sales.append(rec)
+    new_sales.append(new_record)
 
-    return jsonify({new_sales: "rec", 'message': "successfully added"}), 201
+    return jsonify({new_sales: "new_record", 'message': "successfully added"}), 201
 
 
 app.config["DEBUG"] = True                                                                                                                                                                                                                                                                                                                         

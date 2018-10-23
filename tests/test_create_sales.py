@@ -11,8 +11,8 @@ class TestIwoto4(unittest.TestCase):
 
     def test_add_sale(self):
         sale = {
-            "id": 116,
-            "product_name": "maize",
+            "id": 1116,
+            "product_name": "soya",
             "unit price": "12,000 Ugx per Kg",
             "quantity": "1 KG",
             "total price": "12,000 Ugx",

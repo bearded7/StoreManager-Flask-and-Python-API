@@ -10,11 +10,11 @@ class TestIwoto2(unittest.TestCase):
     def setUp(self):
         self.client = app.test_client()
 
-    def test_fetch_specific_sale(self):
+    def test_fetch_owner_sale_records(self):
         result = self.client.get('StoreManager/api/v1/Sales/<salesId>')
         self.assertEqual(result.status_code, 401)
 
-    def test_unavailable_sales_fetch(self):
+    def test_want_to_see_unauthorized_sales_records(self):
         result = self.client.get('StoreManager/api/v1/Sales/')
         self.assertEqual(result.status_code, 404)
 
