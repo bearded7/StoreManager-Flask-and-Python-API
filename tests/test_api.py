@@ -49,7 +49,7 @@ class TestIwoto1(unittest.TestCase):
         self.assertEqual(result.status_code, 404)
         self.assertIsNotNone(result)
 
-    def test_get_all_sales-recs(self):
+    def test_get_all_sales_recs(self):
         result = self.client.get('StoreManager/api/v1/Sales/All/')
         self.assertEqual(result.status_code, 404)
 
