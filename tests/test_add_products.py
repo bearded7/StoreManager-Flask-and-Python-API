@@ -18,24 +18,24 @@ class TestIwoto7(unittest.TestCase):
     def existNow(self):
         self.client = app.test_client()
 
-    def test_route_admin_can_add_product_requires_login(self):
-        feedback = self.client.get(
-            'StoreManager/api/v1/Products/', follow_redirects=True)
-        self.assertIn('Please log in to access this page', feedback.data)
-
-    def test_admin_can_create_product(self):
+    def test_add_product(self):
         product = {
-                 'id': request.json['id'],
-                 'name': request.json['name'],
-                 'price': request.json['price']
+                'id': '112',
+                'name': 'T-Shirt',
+                'Price': '10,000 Ugx'
         }
 
-        outcome = self.client.post('StoreManager/api/v1/Products/Add/',
-                                   content_type='application/json',
-                                   data=json.dumps(product))
+        result = self.client.post('StoreManager/api/v1/Products/Add/',
+                                  content_type='application/json',
+                                  data=json.dumps(product)
+                                  )
 
-        self.assertEqual(outcome.status_code, 404)
-        self.assertIsNotNone(outcome)
+        self.assertEqual(result.status_code, 404)
+        self.assertIsNotNone(result)
+
+    def test_get_all_sales(self):
+        result = self.client.get('StoreManager/api/v1/Sales/All/')
+        self.assertEqual(result.status_code, 404)
 
 
 if __name__ == '__main__':

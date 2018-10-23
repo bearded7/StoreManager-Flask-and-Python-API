@@ -10,20 +10,13 @@ class TestIwoto2(unittest.TestCase):
     def ownit(self):
         self.client = app.test_client()
 
-    def test_route_get_own_sales_requires_login(self):
-        feedback = self.client.get(
-            'StoreManager/api/v1/Sales/', follow_redirects=True)
+    def test_fetch_specific_sale(self):
+        result = self.client.get('StoreManager/api/v1/Sales/<salesId')
+        self.assertEqual(result.status_code, 200)
 
-        self.assertIn('Please log in to access this page', feedback.data)
-
-    def test_client_can_get_own_sale_records(self):
-        feedback = self.client.get(
-            'StoreManager/api/v1/ProductsSales/%id' %id,
-        )
-        serial = json.loads(feedback.serial)
-        print(serial)
-        print(feedback.status_code)
-        self.assertEqual(feedback.status_code, 200)
+    def test_unavailable_sales_fetch(self):
+        result = self.client.get('StoreManager/api/v1/Sales/')
+        self.assertEqual(result.status_code, 404)
 
 
 if __name__ == '__main__':

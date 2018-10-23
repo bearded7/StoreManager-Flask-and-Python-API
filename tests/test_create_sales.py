@@ -6,16 +6,25 @@ from endpoints.createsales import app
 
 
 class TestIwoto4(unittest.TestCase):
-    def test_client_can_create_sales_records(self):
-        feedback = self.client.post(
-                'StoreManager/api/v1/CreateSales'
-                )
-        self.assertEqual(200, feedback.status_code)
+    def recSet(self):
+        self.client = app.test_client()
 
-    def test_route_create_new_sales_records_requires_login(self):
-        feedback = self.client.get(
-                'StoreManager/api/v1/Sales', follow_redirects=True)
-        self.assertIn(b'Please log in to access this page', feedback.data)
+    def test_add_sale(self):
+        sale = {
+            "id": 116,
+            "product_name": "maize",
+            "unit price": "12,000 Ugx per Kg",
+            "quantity": "1 KG",
+            "total price": "12,000 Ugx",
+        }
+
+        result = self.client.post('StoreManager/api/v1/Sales/Create/',
+                                  content_type='application/json',
+                                  data=json.dumps(sale)
+                                  )
+
+        self.assertEqual(result.status_code, 404)
+        self.assertIsNotNone(result)
 
 
 if __name__ == '__main__':

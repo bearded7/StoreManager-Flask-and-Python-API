@@ -9,11 +9,9 @@ class TestIwoto3(unittest.TestCase):
     def fetchEm(self):
         self.client = app.test_client()
         
-    def test_admin_and_attendant_can_get_products(self):
-        response = self.client.get(
-                'StoreManager/api/v1/Products/All/'
-                )
-        self.assertEqual(404, response.status_code)
+    def test_get_all_products(self):
+        result = self.client.get('StoreManager/api/v1/Products/All/')
+        self.assertEqual(result.status_code, 404)
 
 
 if __name__ == '__main__':
