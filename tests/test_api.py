@@ -18,7 +18,7 @@ class TestIwoto1(unittest.TestCase):
     def setUp(self):
         self.client = app.test_client()
 
-    def test_base_url(self):
+    def test_home_url(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
 
@@ -26,11 +26,11 @@ class TestIwoto1(unittest.TestCase):
         result = self.client.get('StoreManager/api/v1/Products/All/')
         self.assertEqual(result.status_code, 404)
 
-    def test_fetch_specific_product(self):
+    def test_get_specific_product(self):
         result = self.client.get('StoreManager/api/v1/Products/<productId')
         self.assertEqual(result.status_code, 200)
 
-    def test_unavailable_product_fetch(self):
+    def test_get_unavailable_product(self):
         result = self.client.get('StoreManager/api/v1/Products/')
         self.assertEqual(result.status_code, 404)
 

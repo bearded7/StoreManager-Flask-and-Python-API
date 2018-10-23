@@ -21,3 +21,13 @@ A CRUD web API with GET and POST functionalities
 - To access specific sale record (attendant only, username is attendant, password: python) /StoreManager/api/v1/Sales/<salesId>
 - To create a product(admin only): /StoreManager/api/v1/Products/Add
 - To create a sale record (attendant only): /StoreManager/api/v1/Sales/Create
+
+
+SPECIAL thanks to:
+
+- Frank Atukunda
+- Namara Racheal
+For their initial help during the development of this API, You two have unblocked me on quite a number of challenges and for that I am grateful!
+
+APPRECIATION
+- To my LFA and the entire team-aretha for being there to unblock me during the later stages of this challenge. I am grateful!
