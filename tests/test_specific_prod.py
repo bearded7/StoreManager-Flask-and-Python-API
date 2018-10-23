@@ -11,7 +11,7 @@ class TestIwoto6(unittest.TestCase):
         
     def test_fetch_specific_product(self):
         result = self.client.get('StoreManager/api/v1/Products/<productId>')
-        self.assertEqual(result.status_code, 200)
+        self.assertEqual(result.status_code, 404)
 
     def test_unavailable_product_fetch(self):
         result = self.client.get('StoreManager/api/v1/Products/')

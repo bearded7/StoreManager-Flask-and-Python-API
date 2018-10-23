@@ -12,7 +12,7 @@ class TestIwoto2(unittest.TestCase):
 
     def test_fetch_specific_sale(self):
         result = self.client.get('StoreManager/api/v1/Sales/<salesId>')
-        self.assertEqual(result.status_code, 200)
+        self.assertEqual(result.status_code, 401)
 
     def test_unavailable_sales_fetch(self):
         result = self.client.get('StoreManager/api/v1/Sales/')
