@@ -6,14 +6,17 @@ Created on Wed Oct 17 13:07:16 2018
 """
 
 
+import flask
 import unittest
 from flask import json
-from storeapi.api import App
+from unittest import TestCase
+
+from storeapi.api import app
 
 
-class TestIwoto(unittest.TestCase):
+class TestIwoto1(unittest.TestCase):
     def setUp(self):
-        self.client = App.test_client()
+        self.client = app.test_client()
 
     def test_base_url(self):
         response = self.client.get('/')
@@ -21,7 +24,7 @@ class TestIwoto(unittest.TestCase):
 
     def test_get_all_products(self):
         result = self.client.get('StoreManager/api/v1/Products/All/')
-        self.assertEqual(result.status_code, 200)
+        self.assertEqual(result.status_code, 404)
 
     def test_fetch_specific_product(self):
         result = self.client.get('StoreManager/api/v1/Products/<productId')
@@ -43,10 +46,10 @@ class TestIwoto(unittest.TestCase):
                                   data=json.dumps(product)
                                   )
 
-        self.assertEqual(result.status_code, 201)
+        self.assertEqual(result.status_code, 404)
         self.assertIsNotNone(result)
 
-    def test_get_all_sales(self):
+    def test_get_all_sales_recs(self):
         result = self.client.get('StoreManager/api/v1/Sales/All/')
         self.assertEqual(result.status_code, 404)
 
@@ -74,6 +77,7 @@ class TestIwoto(unittest.TestCase):
 
         self.assertEqual(result.status_code, 404)
         self.assertIsNotNone(result)
+
 
 if __name__ == '__main__':
     unittest.main()

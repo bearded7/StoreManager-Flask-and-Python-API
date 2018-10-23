@@ -6,10 +6,11 @@ python:
 install:
     - pip install -r requirements.txt
     - pip install pytest-cov
+    - pip install coveralls
 
 script:
-    - py.test --cov=apie
+    - py.test --cov=endpoints
 
 after_success:
     - coveralls
-    - codeclimate-test-reporter
+    - codcov

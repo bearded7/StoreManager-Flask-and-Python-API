@@ -19,14 +19,19 @@ app = Flask(__name__)
 
 @auth.get_password
 def get_password(username):
-    if username == 'admin/attendant that created record':
+    if username == 'attendant':
         return 'python'
     return None
 
 
 @auth.error_handler
 def unauthorized():
-    return make_response(jsonify({'error': 'Unauthorized access'}), 401)
+    return make_response(jsonify(
+        {'error': '''Unauthorized access
+        Use
+        username: attendant
+        password: python'''}
+        ), 401)
 
 
 sales = [
