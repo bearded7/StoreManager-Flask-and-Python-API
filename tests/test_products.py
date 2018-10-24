@@ -1,8 +1,15 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Oct 21 17:35:51 2018
+
+@author: XaXa
+"""
+
 import flask
 import unittest
 from flask import json
 from unittest import TestCase
-from endpoints.all_products import app
+from storeapi.all_products import app
 
 
 class TestIwoto3(unittest.TestCase):

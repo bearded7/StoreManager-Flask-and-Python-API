@@ -1,8 +1,15 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Oct 25 02:37:59 2018
+
+@author: XaXa
+"""
+
 import unittest
 import json
 import requests
 from unittest import TestCase
-from endpoints.sales import app
+from storeapi.sales import app
 
 
 class TestIwoto5(unittest.TestCase):

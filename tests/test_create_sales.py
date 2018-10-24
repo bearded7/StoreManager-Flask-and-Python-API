@@ -1,8 +1,15 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Oct 24 23:15:38 2018
+
+@author: XaXa
+"""
+
 import flask
 import unittest
 from flask import json
 from unittest import TestCase
-from endpoints.createsales import app
+from storeapi.createsales import app
 
 
 class TestIwoto4(unittest.TestCase):
@@ -25,6 +32,15 @@ class TestIwoto4(unittest.TestCase):
 
         self.assertEqual(result.status_code, 404)
         self.assertIsNotNone(result)
+    
+    def test_cannot_add_nonJSON(self):
+        response = self.client.post('StoreManager/api/v1/Sales/Create/',
+                                    data="This is a string! It's not JSON!")
+        self.assertEqual(response.status_code, 404)
+
+    def test_cannot_add_empty_Sale_order(self):
+        response = self.client.get('StoreManager/api/v1/Sales/Create/')
+        self.assertEqual(response.status_code, 404)
 
 
 if __name__ == '__main__':

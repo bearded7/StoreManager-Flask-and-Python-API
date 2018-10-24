@@ -15,165 +15,14 @@ from flask import make_response
 
 app = Flask(__name__)
 
-products = [
-    {
 
-     'id': '110',
-
-     'name': 'Rice',
-
-     'Price': '7,500 Ugx'
-
-    },
-
-    {
-
-     'id': '111',
-
-     'name': 'Mocassins',
-
-     'Price': '75,000 Ugx'
-
-    },
-
-    {
-
-     'id': '112',
-
-     'name': 'T-Shirt',
-
-     'Price': '10,000 Ugx'
-
-    },
-
-    {
-
-     'id': '113',
-
-     'name': 'Timbaland',
-
-     'Price': '150,000 Ugx'
-
-    },
-
-    {
-
-     'id': '114',
-
-     'name': 'Maize Flour',
-
-     'Price': '80,000 Ugx',
-
-    },
-
-    {
-
-     'id': '115',
-
-     'name': 'Jean Trousers',
-
-     'Price': '30,000 Ugx',
-
-    }
-
-        ]
-
-sales = [
-
-    {
-
-     'id': '1110',
-
-     'product': 'Rice',
-
-     'unit price': '7,500 Ugx',
-
-     'quantity': 5,
-
-     'total price': '37,500 Ugx'
-
-    },
-
-    {
-
-     'id': '1111',
-
-     'product': 'T-shirt',
-
-     'unit price': '10,000 Ugx',
-
-     'quantity': 4,
-
-     'total price': '40,000 Ugx'
-
-    },
-
-    {
-
-     'id': '1112',
-
-     'product': 'Mocassins',
-
-     'unit price': '75,000 Ugx',
-
-     'quantity': 2,
-
-     'total price': '150,000 Ugx'
-
-    },
-
-    {
-
-     'id': '1113',
-
-     'product': 'Timbaland',
-
-     'unit price': '150,000 Ugx',
-
-     'quantity': 2,
-
-     'total price': '300,000 Ugx'
-
-    },
-
-    {
-
-     'id': '1114',
-
-     'product': 'Maize flour',
-
-     'unit price': '80,000 Ugx',
-
-     'quantity': 10,
-
-     'total price': '800,000 Ugx'
-
-    },
-
-    {
-
-     'id': '1115',
-
-     'product': 'Jean Trousers',
-
-     'unit price': '30,000 Ugx',
-
-     'quantity': 15,
-
-     'total price': '450,000 Ugx'
-
-    },
-
-        ]
-
-
-new_product = [{}],
+new_products = [{}],
 new_sales = [{}],
 
 
-@app.route('/', methods=['GET'])
+@app.route('/StoreManager/api/v1/', methods=['GET'])
 def home():
-    return ('Welcome to Iwotokijikiji Store Manager'),200
+    return ('Iwotokijikiji Store welcomes you'),200
 
 
 @app.errorhandler(405)
@@ -198,13 +47,13 @@ def not_found(error):
 
 @app.route('/StoreManager/api/v1/Products/All', methods=['GET'])
 def get_products():
-    return jsonify({'products': products})
+    return jsonify({'products': new_products, 'message': "Showing all products"})
 
 
 @app.route('/StoreManager/api/v1/Products/<productId>', methods=['GET'])
 def get_product(productId):
-    usr = [prod for prod in products if (prod['id'] == productId)]
-    return jsonify({'prod': usr})
+    usr = [prod for prod in new_products if (prod['id'] == productId)],
+    return jsonify({'prod': usr, 'message': "Showing product by id searched for"})
 
 
 @app.route('/StoreManager/api/v1/Products/Add', methods=['POST'])
@@ -233,22 +82,22 @@ def create_prod():
     if not create_prod['total price']:
         return jsonify({'message': "total is missing"}), 400
 
-    new_product.append(create_prod)
+    new_products.append(create_prod)
 
     return jsonify(
-            {new_product: "craete_prod", 'message': "successfully added"}
+            {new_products: "craete_prod", 'message': "successfully added new product"}
             ), 201
 
 
 @app.route('/StoreManager/api/v1/Sales/All', methods=['GET'])
 def get_sales():
-    return jsonify({'sales': sales})
+    return jsonify({'sales': new_sales, 'message': "Showing all sales records"})
 
 
 @app.route('/StoreManager/api/v1/Sales/<salesId>', methods=['GET'])
 def get_sale(salesId):
-    usr = [new_record for new_record in sales if (new_record['id'] == salesId)]
-    return jsonify({'new_record': usr})
+    usr = [new_record for new_record in new_sales if (new_record['id'] == salesId)]
+    return jsonify({'new_record': usr, 'message': "Showing sale record by id searched for"})
 
 
 @app.route('/StoreManager/api/v1/Sales/Create', methods=['POST'])
@@ -279,7 +128,7 @@ def createnew_record():
 
     new_sales.append(new_record)
 
-    return jsonify({new_sales: "new_record", 'message': "successfully added"}), 201
+    return jsonify({new_sales: "new_record", 'message': "successfully craeted new sale records"}), 201
 
 
 app.config["DEBUG"] = True                                                                                                                                                                                                                                                                                                                         
