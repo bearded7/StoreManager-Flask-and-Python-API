@@ -101,7 +101,7 @@ products = [
  ]
 
 
-@app.route('/StoreManager/api/v1/AddProducts', methods=['POST'])
+@app.route('/StoreManager/api/v1/Products/Add/', methods=['POST'])
 @auth.login_required
 def createProduct():
 

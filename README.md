@@ -49,6 +49,8 @@ And repeat
 $ curl -i http://localhost:5000/
 ```
 
+Its from this basics that we shall now move on to build our Store Manager flsk site.
+
 # Develop the RESTful Services
 
 - To develop the restful services for the planned objective, let's create an in-memory database in python using the dictionary data type.
@@ -83,15 +85,15 @@ nosetests --with-coverage --cover-package=app
 - Create a Heroku App  command 
 
 ```
-$ heroku apps:create flask-microblog
-Creating flask-microblog... done
-http://flask-microblog.herokuapp.com/ | https://git.heroku.com/flask-microblog.git
+$ heroku apps:create Iwotokijikiji
+Creating Iwotokijikiji... done
+http://Iwotokijikiji.herokuapp.com/ | https://git.heroku.com/Iwotokijikiji.git
 ```
 
 -Create a Procfile with contents 
 
 ```
-web: flask db upgrade; flask translate compile; gunicorn microblog:app
+web: gunicorn run:app
 ```
 
 - Create a requirements.txt file with command 
@@ -112,8 +114,12 @@ git push heroku master
 
 
 # Versioning
-
-We use the format v1, for this project. only whole numbers allowed. 
+  
+We use the format   
+``` 
+v1
+```
+for this project. only whole numbers allowed. 
 
 # Authors
 

@@ -28,7 +28,7 @@ class TestIwoto7(unittest.TestCase):
             content_type='application/json',
             data=json.dumps(product),)
 
-        self.assertEqual(result.status_code, 404)
+        self.assertEqual(result.status_code, 401)
         self.assertIsNotNone(result)
 
     def test_fields_can_take_both_str_and_int(self):

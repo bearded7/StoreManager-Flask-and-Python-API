@@ -45,15 +45,15 @@ def not_found(error):
     return make_response(jsonify({'error': 'product not found'}), 404)
 
 
-@app.route('/StoreManager/api/v1/Products/All', methods=['GET'])
+@app.route('/StoreManager/api/v1/Products/All/', methods=['GET'])
 def get_products():
     return jsonify({'products': products, 'message': "Showing all products"})
 
 
 @app.route('/StoreManager/api/v1/Products/<productId>', methods=['GET'])
 def get_product(productId):
-    serial = [prod for prod in products if (prod['id'] == productId)]
-    return jsonify({'prod': serial, 'message': "Showing product by id "})
+    serial = [prod for prod in products if (prod == productId)]
+    return jsonify({'prod': serial})
 
 
 @app.route('/StoreManager/api/v1/Products/Add', methods=['POST'])
@@ -96,7 +96,7 @@ def get_sales():
 
 @app.route('/StoreManager/api/v1/Sales/<salesId>', methods=['GET'])
 def get_sale(salesId):
-    usr = [new_record for new_record in sales if (new_record['id'] == salesId)]
+    usr = [new_record for new_record in sales if (new_record == salesId)]
     return jsonify({'new_record': usr, 'message': "Showing sale record by id"})
 
 
