@@ -27,51 +27,23 @@ $ pip install Flask
 - To create a product(admin only): /StoreManager/api/v1/Products/Add
 - To create a sale record (attendant only): /StoreManager/api/v1/Sales/Create
 
-# Creating a Hello World Web Server
-
-- First, we create a web server, create a dictionary to hold a JSON objects for a couple of employee records and then we add RESTful APIs for each supported operations. Please look at the below program, which creates a web server. Save the below program into hello.py and execute it.
-
-```
-
-from flask import Flask
-app = Flask(__name__)
-@app.route("/")
-def hello():
-    return "Hello World!"
-if __name__ == "__main__":
-    app.run()
-```
-- Execute the above program and you will see that you web server is ready to service you.
-And repeat
-- Now you can open your web browser and check your web server. The server is available in the URL http://localhost:5000/. If you are familiar with cUrl execute the below to check the status.
-
-```
-$ curl -i http://localhost:5000/
-```
-
-Its from this basics that we shall now move on to build our Store Manager flsk site.
 
 # Develop the RESTful Services
 
 - To develop the restful services for the planned objective, let's create an in-memory database in python using the dictionary data type.
 
-GET
-- We have created two products in the dictionary. Now let's write a code to retrieve them using web services. As per our plan, we need two implementations one is to retrieve all the products and another one to retrieve the specific product with the given id.
+##GET
+We need two implementations of the GET method one is to retrieve all the products and another one to retrieve the specific product with the given id.
 
-GET SPECIFIC
-- Now we develop the rest service to get a product with a given id.
-
-POST
-- POST method is used to create a new employee inside the database.
-
-- This is a very basic web services we have developed.  I hope this helps to understand basics of RESTful Web Services development.
+##POST
+- POST method is used to create a new product inside the database.
 
 
 # Tests
 
 You can now run the tests from the terminal using pytest
 ```
-pytest api.py
+pytest api.py 
 ```
 You can also run tests with coverage by running this command in the terminal
 ```

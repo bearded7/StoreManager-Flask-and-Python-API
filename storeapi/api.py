@@ -85,7 +85,7 @@ def create_prod():
     products.append(create_prod)
 
     return jsonify(
-            {products: "craete_prod", 'message': "success, added new product"}
+            {products: "create_prod", 'message': "success, added new product"}
             ), 201
 
 
