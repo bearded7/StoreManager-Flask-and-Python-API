@@ -37,15 +37,7 @@ class TestIwoto6(unittest.TestCase):
         self.assertEqual('T-Shirt', display['name'])
 
 
-    def test_fetching_products(self):
-        response = self.client.post("StoreManager/api/v1/Products/",
-            content_type='application/json',
-            data=json.dumps(dict(product="Shirts", quantity="20", unit_price="200"),))
 
-        reply = json.loads(response.data.decode())
-        response2 = self.client.get("StoreManager/api/v1/Products/",
-        content_type='application/json')
-        reply2 = json.loads(response2.data.decode())
         self.assertEquals(response2.status_code, 200)
 
     def test_fetching_single_product(self):

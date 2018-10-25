@@ -16,22 +16,22 @@ from storeapi.api import app
 
 class TestIwoto1(unittest.TestCase):
     def setUp(self):
-        self.client = app.test_client()
+        self.iwoto = app.test_client()
 
     def test_home_url(self):
-        response = self.client.get('/')
+        response = self.iwoto.get('/')
         self.assertEqual(response.status_code, 200)
 
     def test_get_all_products(self):
-        result = self.client.get('StoreManager/api/v1/Products/All/')
+        result = self.iwoto.get('StoreManager/api/v1/Products/All/')
         self.assertEqual(result.status_code, 404)
 
     def test_get_specific_product(self):
-        result = self.client.get('StoreManager/api/v1/Products/<productId')
+        result = self.iwoto.get('StoreManager/api/v1/Products/113')
         self.assertEqual(result.status_code, 200)
 
     def test_get_unavailable_product(self):
-        result = self.client.get('StoreManager/api/v1/Products/')
+        result = self.iwoto.get('StoreManager/api/v1/Products/')
         self.assertEqual(result.status_code, 404)
 
     def test_add_product(self):
@@ -41,7 +41,7 @@ class TestIwoto1(unittest.TestCase):
                 'Price': '10,000 Ugx'
         }
 
-        result = self.client.post('StoreManager/api/v1/Products/Add/',
+        result = self.iwoto.post('StoreManager/api/v1/Products/Add/',
                                   content_type='application/json',
                                   data=json.dumps(product)
                                   )
@@ -50,15 +50,15 @@ class TestIwoto1(unittest.TestCase):
         self.assertIsNotNone(result)
 
     def test_get_all_sales_recs(self):
-        result = self.client.get('StoreManager/api/v1/Sales/All/')
+        result = self.iwoto.get('StoreManager/api/v1/Sales/All/')
         self.assertEqual(result.status_code, 404)
 
-    def test_fetch_specific_sale(self):
-        result = self.client.get('StoreManager/api/v1/Sales/<salesId')
-        self.assertEqual(result.status_code, 200)
+    def test_get_specific_sale(self):
+        result = self.iwoto.get('StoreManager/api/v1/Sales/1114')
+        self.assertEqual(result.status_code, 404)
 
     def test_unavailable_sales_fetch(self):
-        result = self.client.get('StoreManager/api/v1/Sales/')
+        result = self.iwoto.get('StoreManager/api/v1/Sales/')
         self.assertEqual(result.status_code, 404)
 
     def test_add_sale(self):
@@ -70,7 +70,7 @@ class TestIwoto1(unittest.TestCase):
             "total price": "12,000 Ugx",
         }
 
-        result = self.client.post('StoreManager/api/v1/Sales/Create/',
+        result = self.iwoto.post('StoreManager/api/v1/Sales/Create/',
                                   content_type='application/json',
                                   data=json.dumps(sale)
                                   )

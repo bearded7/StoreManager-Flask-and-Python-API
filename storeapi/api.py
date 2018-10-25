@@ -16,8 +16,8 @@ from flask import make_response
 app = Flask(__name__)
 
 
-new_products = [{}],
-new_sales = [{}],
+products = [{}],
+sales = [{}],
 
 
 @app.route('/StoreManager/api/v1/', methods=['GET'])
@@ -47,13 +47,13 @@ def not_found(error):
 
 @app.route('/StoreManager/api/v1/Products/All', methods=['GET'])
 def get_products():
-    return jsonify({'products': new_products, 'message': "Showing all products"})
+    return jsonify({'products': products, 'message': "Showing all products"})
 
 
 @app.route('/StoreManager/api/v1/Products/<productId>', methods=['GET'])
 def get_product(productId):
-    usr = [prod for prod in new_products if (prod['id'] == productId)],
-    return jsonify({'prod': usr, 'message': "Showing product by id searched for"})
+    serial = [prod for prod in products if (prod['id'] == productId)]
+    return jsonify({'prod': serial, 'message': "Showing product by id "})
 
 
 @app.route('/StoreManager/api/v1/Products/Add', methods=['POST'])
@@ -82,22 +82,22 @@ def create_prod():
     if not create_prod['total price']:
         return jsonify({'message': "total is missing"}), 400
 
-    new_products.append(create_prod)
+    products.append(create_prod)
 
     return jsonify(
-            {new_products: "craete_prod", 'message': "successfully added new product"}
+            {products: "craete_prod", 'message': "success, added new product"}
             ), 201
 
 
 @app.route('/StoreManager/api/v1/Sales/All', methods=['GET'])
 def get_sales():
-    return jsonify({'sales': new_sales, 'message': "Showing all sales records"})
+    return jsonify({'sales': sales, 'message': "Showing all sales records"})
 
 
 @app.route('/StoreManager/api/v1/Sales/<salesId>', methods=['GET'])
 def get_sale(salesId):
-    usr = [new_record for new_record in new_sales if (new_record['id'] == salesId)]
-    return jsonify({'new_record': usr, 'message': "Showing sale record by id searched for"})
+    usr = [new_record for new_record in sales if (new_record['id'] == salesId)]
+    return jsonify({'new_record': usr, 'message': "Showing sale record by id"})
 
 
 @app.route('/StoreManager/api/v1/Sales/Create', methods=['POST'])
@@ -126,10 +126,9 @@ def createnew_record():
     if not new_record['total price']:
         return jsonify({'message': "total is missing"}), 400
 
-    new_sales.append(new_record)
+    sales.append(new_record)
 
-    return jsonify({new_sales: "new_record", 'message': "successfully craeted new sale records"}), 201
+    return jsonify({sales: "new_record", 'message': "craeted new sale "}), 201
 
 
-app.config["DEBUG"] = True                                                                                                                                                                                                                                                                                                                         
-
+app.config["DEBUG"] = True
