@@ -117,12 +117,8 @@ We use the format v1, for this project. only whole numbers allowed.
 
 # Authors
 
-* **Oriba Douglas** - *Initial work* 
+* **Oriba Douglas** 
 
-
-# License
-
-This project is open licensed.
 
 # Acknowledgments
 
