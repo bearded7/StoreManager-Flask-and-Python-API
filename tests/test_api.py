@@ -140,39 +140,10 @@ class Testclient1(unittest.TestCase):
         content_type='apllication/json'
         )
         self.assertEqual(response.status_code, 200)
-        self.assertFalse(response.status_code, 500)
-
-    def test_get_all_rpoduct_by_id(self):
-        self.client.get('StoreManager/api/v1/Products/All/',
-                        content_type= 'application/json',
-                        data= json.dumps(self.products)
-                        )
-        result= self.client.get('StoreManager/api/v1/Products/All/')
-        print(result)
-        self.assertEqual(result.status_code, 200)
-        self.assertEqual(json.loads(result.data.decode()), {'200': [self.products]})
-        self.client.delete('StoreManager/api/v1/Products/113')
-
-    def test_get_all_product(self):
-        result = self.client.get('StoreManager/api/v1/Products/113',
-        content_type='response.status'
-        )
-        self.assertEqual(result.status_code, 200)
-        self.assertFalse(result.status, 500)
 
     def test_get_unavailable_product(self):
         result = self.client.get('StoreManager/api/v1/Products/')
         self.assertEqual(result.status_code, 404)
-
-    def test_add_product(self):
-        add_product = self.client.post(
-            'StoreManager/api/v1/Products/Add/',
-            content_type='application/json',
-            data=json.dumps(self.new_product))
-                                  
-        self.assertEqual(add_product.status_code, 201)
-        self.assertEqual(json.loads(add_product.data.decode()), {'201': 'New product added'})
-        self.client.delete('StoreManager/api/v1/Products/115')
 
     def test_get_all_sales_recs(self):
         result = self.client.get('StoreManager/api/v1/Sales/All/')
@@ -202,31 +173,6 @@ class Testclient1(unittest.TestCase):
 
         self.assertEqual(result.status_code, 404)
         self.assertIsNotNone(result)
-    
-    def test_index(self):
-        response = self.client.get('/')
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(json.loads(response.data.decode()), {"Hello Admin":"Welcome to ManagerStore"})
-    
-    def test_add_product_successfully(self):
-        post_product = self.client.post('/api/v1/products',
-                                        content_type='application/json',
-                                        data = json.dumps(self.products)
-                                        )
-        self.assertEqual(post_product.status_code, 201)
-        self.assertEqual(json.loads(post_product.data.decode()), {'201': 'Product successfully added'})
-        self.client.delete('/api/v1/products/1')
-   
-    def test_list_all_products(self):
-        self.client.post('/StoreManager/api/v1/Products/All',
-                        content_type='application/json',
-                        data=json.dumps(self.new_product)
-                        )
-        result = self.client.get('/api/v1/products')
-        print(result)
-        self.assertEqual(result.status_code, 200)
-        self.assertEqual(json.loads(result.data.decode()), {'200': [self.products]})
-        self.client.delete('/api/v1/products/1'),
 
 
 if __name__ == '__main__':
