@@ -2,7 +2,6 @@
 A CRUD web API with GET and POST functionalities 
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
-[![Code Climate](https://codeclimate.com/github/bearded7/StoreManager-Flask-and-Python-API.svg?branch=develop/badges/gpa.svg)](https://codeclimate.com/github/StoreManager-Flask-and-Python-API.svg?branch=develop)
 [![Build Status](https://travis-ci.org/bearded7/StoreManager-Flask-and-Python-API.svg?branch=develop)](https://travis-ci.org/bearded7/StoreManager-Flask-and-Python-API?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/de3d25a8dafaada7833c/maintainability)](https://codeclimate.com/github/bearded7/StoreManager-Flask-and-Python-API/maintainability)
 
