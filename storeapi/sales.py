@@ -118,7 +118,7 @@ sales = [
  ]
 
 
-@app.route('/StoreManager/api/v1/GetAllSales', methods=['GET'])
+@app.route('/StoreManager/api/v1/Sales/All', methods=['GET'])
 @auth.login_required
 def getAllSales():
     return jsonify({'sales_records': sales})

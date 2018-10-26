@@ -9,209 +9,181 @@ Created on Wed Oct 17 13:07:16 2018
 import flask
 import unittest
 from flask import json
-from unittest import TestCase
-
 from storeapi.api import app
 
-products = [
- {
 
-  'id': '110',
+class Testclient1(unittest.TestCase):
+    products = {
+        'id': '110',
 
-  'name': 'Rice',
+        'name': 'Rice',
 
-  'Price': '7,500 Ugx'
+        'Price': '7,500 Ugx'
 
- },
+    },
+    {
+        'id': '111',
 
- {
+        'name': 'Mocassins',
 
-  'id': '111',
+        'Price': '75,000 Ugx'
+    },
+    {
+        'id': '112',
 
-  'name': 'Mocassins',
+        'name': 'T-Shirt',
 
-  'Price': '75,000 Ugx'
+        'Price': '10,000 Ugx'
+    },
+    {
+        'id': '113',
 
- },
+        'name': 'Timbaland',
 
- {
+        'Price': '150,000 Ugx'
+    },
+    {
+        'id': '114',
 
-  'id': '112',
+        'name': 'Maize Flour',
 
-  'name': 'T-Shirt',
+        'Price': '80,000 Ugx'
+    },
+    {
+        'id': '115',
 
-  'Price': '10,000 Ugx'
+        'name': 'Jean Trousers',
 
- },
+        'Price': '30,000 Ugx'
+    }
 
- {
+    sales = {
+        'id': '1110',
 
-  'id': '113',
+        'product': 'Rice',
 
-  'name': 'Timbaland',
+        'unit price': '7,500 Ugx',
 
-  'Price': '150,000 Ugx'
+        'quantity': 5,
 
- },
+        'total price': '37,500 Ugx'
+    },
+    {
+        'id': '1111',
 
- {
+        'product': 'T-shirt',
 
-  'id': '114',
+        'unit price': '10,000 Ugx',
 
-  'name': 'Maize Flour',
+        'quantity': 4,
 
-  'Price': '80,000 Ugx'
+        'total price': '40,000 Ugx'
+    },
+    {
 
- },
+        'id': 1112,
 
- {
+        'product': 'Mocassins',
 
-  'id': '115',
+        'unit price': '75,000 Ugx',
 
-  'name': 'Jean Trousers',
+        'quantity': 2,
 
-  'Price': '30,000 Ugx'
+        'total price': '150,000 Ugx'
+    },
+    {
 
- }
+        'id': '1113',
 
- ]
+        'product': 'Timbaland',
 
-sales = [
+        'unit price': '150,000 Ugx',
 
- {
+        'quantity': 2,
 
-  'id': '1110',
+        'total price': '300,000 Ugx'
+    },
+    {
 
-  'product': 'Rice',
+        'id': '1114',
 
-  'unit price': '7,500 Ugx',
+        'product': 'Maize flour',
 
-  'quantity': 5,
+        'unit price': '80,000 Ugx',
 
-  'total price': '37,500 Ugx'
+        'quantity': 10,
 
- },
+        'total price': '800,000 Ugx'
+    },
+    {
 
- {
+        'id': '1115',
 
-  'id': '1111',
+        'product': 'Jean Trousers',
 
-  'product': 'T-shirt',
+        'unit price': '30,000 Ugx',
 
-  'unit price': '10,000 Ugx',
+        'quantity': 15,
 
-  'quantity': 4,
+        'total price': '450,000 Ugx'
+    }
 
-  'total price': '40,000 Ugx'
+    new_product = {},
+    new_sale = {}
 
- },
 
- {
-
-  'id': 1112,
-
-  'product': 'Mocassins',
-
-  'unit price': '75,000 Ugx',
-
-  'quantity': 2,
-
-  'total price': '150,000 Ugx'
-
- },
-
- {
-
-  'id': '1113',
-
-  'product': 'Timbaland',
-
-  'unit price': '150,000 Ugx',
-
-  'quantity': 2,
-
-  'total price': '300,000 Ugx'
-
- },
-
- {
-
-  'id': '1114',
-
-  'product': 'Maize flour',
-
-  'unit price': '80,000 Ugx',
-
-  'quantity': 10,
-
-  'total price': '800,000 Ugx'
-
- },
-
- {
-
-  'id': '1115',
-
-  'product': 'Jean Trousers',
-
-  'unit price': '30,000 Ugx',
-
-  'quantity': 15,
-
-  'total price': '450,000 Ugx'
-
- },
-
- ]
-
-new_product = [{}],
-new_sale = [{}]
-
-class TestIwoto1(unittest.TestCase):
     def setUp(self):
-        self.iwoto = app.test_client()
+        self.client = app.test_client()
 
-    def test_home_url(self):
-        response = self.iwoto.get('/StoreManager/api/v1/')
+    def test_home_base(self):
+        response = self.client.get('/StoreManager/api/v1/',
+        content_type='apllication/json'
+        )
         self.assertEqual(response.status_code, 200)
+        self.assertFalse(response.status_code, 500)
 
-    def test_get_all_products(self):
-        result = self.iwoto.get('StoreManager/api/v1/Products/All/')
+    def test_get_all_rpoduct_by_id(self):
+        self.client.get('StoreManager/api/v1/Products/All/',
+                        content_type= 'application/json',
+                        data= json.dumps(self.products)
+                        )
+        result= self.client.get('StoreManager/api/v1/Products/All/')
+        print(result)
         self.assertEqual(result.status_code, 200)
+        self.assertEqual(json.loads(result.data.decode()), {'200': [self.products]})
+        self.client.delete('StoreManager/api/v1/Products/113')
 
-    def test_get_specific_product(self):
-        result = self.iwoto.get('StoreManager/api/v1/Products/113')
+    def test_get_all_product(self):
+        result = self.client.get('StoreManager/api/v1/Products/113',
+        content_type='response.status'
+        )
         self.assertEqual(result.status_code, 200)
+        self.assertFalse(result.status, 500)
 
     def test_get_unavailable_product(self):
-        result = self.iwoto.get('StoreManager/api/v1/Products/')
+        result = self.client.get('StoreManager/api/v1/Products/')
         self.assertEqual(result.status_code, 404)
 
     def test_add_product(self):
-        new_product = {
-                'id': '112',
-                'name': 'T-Shirt',
-                'Price': '10,000 Ugx'
-        }
-
-        result = self.iwoto.post(
+        add_product = self.client.post(
             'StoreManager/api/v1/Products/Add/',
             content_type='application/json',
-            data=json.dumps(new_product))
+            data=json.dumps(self.new_product))
                                   
-        self.assertEqual(result.status_code, 404)
-        self.assertIsNotNone(result)
+        self.assertEqual(add_product.status_code, 201)
+        self.assertEqual(json.loads(add_product.data.decode()), {'201': 'New product added'})
+        self.client.delete('StoreManager/api/v1/Products/115')
 
     def test_get_all_sales_recs(self):
-        result = self.iwoto.get('StoreManager/api/v1/Sales/All/')
+        result = self.client.get('StoreManager/api/v1/Sales/All/')
         self.assertEqual(result.status_code, 404)
 
     def test_get_specific_sale(self):
-        result = self.iwoto.get('StoreManager/api/v1/Sales/1114')
+        result = self.client.get('StoreManager/api/v1/Sales/1114')
         self.assertEqual(result.status_code, 200)
 
     def test_unavailable_sales_fetch(self):
-        result = self.iwoto.get('StoreManager/api/v1/Sales/')
+        result = self.client.get('StoreManager/api/v1/Sales/')
         self.assertEqual(result.status_code, 404)
 
     def test_add_sale(self):
@@ -223,13 +195,38 @@ class TestIwoto1(unittest.TestCase):
             "total price": "12,000 Ugx",
         }
 
-        result = self.iwoto.post(
+        result = self.client.post(
             'StoreManager/api/v1/Sales/Create/',
             content_type='application/json',
             data=json.dumps(new_sale))
 
         self.assertEqual(result.status_code, 404)
         self.assertIsNotNone(result)
+    
+    def test_index(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(json.loads(response.data.decode()), {"Hello Admin":"Welcome to ManagerStore"})
+    
+    def test_add_product_successfully(self):
+        post_product = self.client.post('/api/v1/products',
+                                        content_type='application/json',
+                                        data = json.dumps(self.products)
+                                        )
+        self.assertEqual(post_product.status_code, 201)
+        self.assertEqual(json.loads(post_product.data.decode()), {'201': 'Product successfully added'})
+        self.client.delete('/api/v1/products/1')
+   
+    def test_list_all_products(self):
+        self.client.post('/StoreManager/api/v1/Products/All',
+                        content_type='application/json',
+                        data=json.dumps(self.new_product)
+                        )
+        result = self.client.get('/api/v1/products')
+        print(result)
+        self.assertEqual(result.status_code, 200)
+        self.assertEqual(json.loads(result.data.decode()), {'200': [self.products]})
+        self.client.delete('/api/v1/products/1'),
 
 
 if __name__ == '__main__':

@@ -75,7 +75,7 @@ products = [
  ]
 
 
-@app.route('/StoreManager/api/v1/GetAllProducts', methods=['GET'])
+@app.route('/StoreManager/api/v1/Products/All', methods=['GET'])
 def getAllProducts():
     return jsonify({'products': products})
 

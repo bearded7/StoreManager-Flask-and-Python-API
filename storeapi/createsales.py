@@ -122,7 +122,7 @@ sales = [
 saless = [{}],
 
 
-@app.route('/StoreManager/api/v1/CreateSales', methods=['POST'])
+@app.route('/StoreManager/api/v1/Sales/Create', methods=['POST'])
 @auth.login_required
 def createSales():
 
