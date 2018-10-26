@@ -16,8 +16,8 @@ from flask import make_response
 app = Flask(__name__)
 
 
-products = [{}],
-sales = [{}],
+products = [ ]
+sales = [ ]
 
 
 @app.route('/StoreManager/api/v1/', methods=['GET'])
@@ -85,7 +85,7 @@ def create_prod():
     products.append(create_prod)
 
     return jsonify(
-            {products: "create_prod", 'message': "success, added new product"}
+            {"products": products, 'message': "success, added new product"}
             ), 201
 
 
@@ -128,7 +128,7 @@ def createnew_record():
 
     sales.append(new_record)
 
-    return jsonify({sales: "new_record", 'message': "craeted new sale "}), 201
+    return jsonify({'sales': sales, 'message': "created new sale "}), 201
 
 
 app.config["DEBUG"] = True
